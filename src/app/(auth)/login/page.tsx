@@ -41,7 +41,7 @@ const LoginPage = () => {
               </h2>
             </div>
             <Button
-              className="bg-white text-foreground border flex items-center justify-center gap-4 hover:bg-white hover:shadow-2xl transition-all"
+              className="bg-white text-foreground border flex items-center justify-center gap-2 hover:bg-white hover:shadow-2xl transition-all"
               size="lg"
               onClick={handleLoginGoogle}
             >
@@ -53,7 +53,7 @@ const LoginPage = () => {
                   height={100}
                 />
               </div>
-              <p className="font-semibold">Login With Google</p>
+              <p className="font-bold">Login With Google</p>
             </Button>
           </div>
           <div className="absolute bottom-10">

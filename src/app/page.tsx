@@ -2,14 +2,24 @@
 
 import { Button } from "@/components/ui/button";
 import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const session = useSession();
-  console.log(session);
-  
-  return <>
-   <div>
-     <Button onClick={() => signOut()}>logout</Button>
-   </div>
-  </>;
+  const router = useRouter();
+
+  return (
+    <>
+      <div>
+        <Button
+          onClick={() => {
+            signOut();
+            router.push("/login");
+          }}
+        >
+          logout
+        </Button>
+      </div>
+    </>
+  );
 }
