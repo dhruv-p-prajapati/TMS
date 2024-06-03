@@ -1,6 +1,6 @@
 import { mongoInit } from "@/lib/dbConfig";
-import Space from "@/models/space.model";
 import User from "@/models/user.model";
+import { UserRole } from "@/utils/constants/enums";
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -17,9 +17,7 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async signIn({ user, account }: { user: any; account: any }) {
       if (account.provider == "google") {
-        
         await mongoInit();
-
         const existedUser = await User.findOne({ email: user.email });
         if (!existedUser) {
           const newUser = new User({
@@ -30,8 +28,14 @@ export const authOptions: AuthOptions = {
           await newUser.save();
         }
       }
-
       return true;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        const existedUser = await User.findOne({ email: user.email });
+        token.role = existedUser.role
+      }
+      return token;
     },
   },
 };
