@@ -1,4 +1,5 @@
-import { UserRole } from "@/utils/enums";
+
+import { UserRole } from "@/utils/constants/enums";
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -23,7 +24,7 @@ const userSchema = new mongoose.Schema(
     space: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "space",
-      default : "6659b014580fba583f243883"
+      default: null,
     },
     publishedTopic: {
       type: [String],
@@ -37,6 +38,4 @@ const userSchema = new mongoose.Schema(
 );
 
 const User = mongoose.models.user || mongoose.model("user", userSchema);
-// const User = mongoose.model("user", userSchema);
-
 export default User;
