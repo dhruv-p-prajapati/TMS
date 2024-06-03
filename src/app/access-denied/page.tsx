@@ -13,7 +13,7 @@ const AccessDeniedPage = () => {
         />
         <div>
           <h2 className="font-bold text-center text-sm md:text-lg text-primary">
-            Sorry You Can't have access to this Page
+            Sorry You Cant have access to this Page
           </h2>
         </div>
         <Button className="mt-4">Go Back</Button>

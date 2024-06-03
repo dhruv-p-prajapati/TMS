@@ -1,4 +1,4 @@
-import { decode } from "next-auth/jwt";
+import { JWT, decode } from "next-auth/jwt";
 import { NextRequest } from "next/server";
 import { PrivateRoutes, PublicRoutes } from "../constants/route";
 

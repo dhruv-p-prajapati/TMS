@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
     return Response.redirect(new URL("/", request.nextUrl));
   }
 
-  const hasAccess = await hasAccessToURL(token, request);
+  const hasAccess = await hasAccessToURL(token!, request);
   console.log({hasAccess});
   
   if (!hasAccess) {
