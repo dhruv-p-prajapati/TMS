@@ -1,7 +1,7 @@
 export const PrivateRoutes = {
-  admin: ["/dashboard"],
-  lead: ["/dashboard"],
-  trainer: ["/xyz"],
-  trainee: ["/projects"],
+  admin: ["/dashboard", "/dashboard"],
+  lead: [""],
+  trainer: ["/trainer-dashboard"],
+  trainee: ["/projects", "/trainee-dashboard"],
 };
 export const PublicRoutes = ["/access-denied", "/", "/login"];

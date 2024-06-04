@@ -1,7 +1,11 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const AccessDeniedPage = () => {
+  const router = useRouter()
   return (
     <div className="flex justify-center items-center size-full">
       <div className="flex flex-col items-center">
@@ -13,10 +17,10 @@ const AccessDeniedPage = () => {
         />
         <div>
           <h2 className="font-bold text-center text-sm md:text-lg text-primary">
-            Sorry You Cant have access to this Page
+            Sorry you cant have access to this page
           </h2>
         </div>
-        <Button className="mt-4">Go Back</Button>
+        <Button className="mt-4" onClick={() => router.back()}>Go Back</Button>
       </div>
     </div>
   );
