@@ -18,7 +18,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProviderWrapper session={session}>
-        <body className={`${manrope} h-screen w-screen`}>{children}</body>
+        <body className={`${manrope} h-screen w-full `}>{children}</body>
       </SessionProviderWrapper>
     </html>
   );

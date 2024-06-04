@@ -13,14 +13,14 @@ export async function middleware(request: NextRequest) {
     return Response.redirect(new URL("/", request.nextUrl));
   }
 
-  const hasAccess = await hasAccessToURL(token, request);
-  console.log({hasAccess});
-  
+  const hasAccess = await hasAccessToURL(request);
+  console.log({ path: request.nextUrl.pathname }, { hasAccess });
+
   if (!hasAccess) {
     return Response.redirect(new URL("/access-denied", request.nextUrl));
   }
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|images).*)"],
 };
