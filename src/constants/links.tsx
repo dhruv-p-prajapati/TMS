@@ -1,6 +1,6 @@
-import { LayoutDashboard } from "lucide-react";
+import { Links } from "@/types";
 
-export const links = {
+export const SidebarLinks: Links = {
   admin: [],
   trainee: [
     {

@@ -1,13 +1,15 @@
-import { Sidebar } from "@/components/Sidebar";
+import { Sidebar } from "@/components/custom/Sidebar";
 import { ReactNode } from "react";
 
 const AppLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex">
       <div className="h-screen">
-      <Sidebar/>
+        <Sidebar />
       </div>
-      <div className="w-full h-screen bg-blue-300 overflow-y-auto">{children}</div>
+      <div className="w-full h-screen bg-blue-00 overflow-y-auto">
+        {children}
+      </div>
     </div>
   );
 };

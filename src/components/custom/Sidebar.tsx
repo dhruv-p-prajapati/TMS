@@ -1,14 +1,17 @@
 "use client";
-import { links } from "@/utils/constants/links";
-import { getRole } from "@/utils/helpers";
+import { UserRole } from "@/constants/enums";
+import { SidebarLinks } from "@/constants/links";
+import useAuthSession from "@/hooks/useAuthSession";
+import { LinkItem } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export function Sidebar() {
-  const role = "trainee";
   const pathName = usePathname();
+  const [isAuthenticated, user, role] = useAuthSession();
+
+  console.log({ isAuthenticated, user, role });
 
   return (
     <div className="h-full w-auto p-2 bg-white">
@@ -21,7 +24,7 @@ export function Sidebar() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        {links[role].map((link, idx: number) => (
+        {SidebarLinks[role as UserRole]?.map((link: LinkItem, idx: number) => (
           <Link
             key={idx}
             href={link.slug}

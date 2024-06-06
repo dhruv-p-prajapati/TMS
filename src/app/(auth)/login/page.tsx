@@ -1,11 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import useAuthSession from "@/hooks/useAuthSession";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
+  const [isAuthenticated, user, role] = useAuthSession();
+  console.log({ isAuthenticated, user, role });
+
   const handleLoginGoogle = async () => {
     signIn("google", {
       callbackUrl: "/",
