@@ -1,20 +1,22 @@
 import type { NextRequest } from "next/server";
-import { hasAccessToURL } from "./utils/helpers";
-import { cookies } from "next/headers";
+import { getToken } from "next-auth/jwt";
+import { Token } from "./types";
+import { hasAccessToURL } from "./helpers";
 
 export async function middleware(request: NextRequest) {
-  const token = cookies().get("next-auth.session-token")?.value;
+  const token = (await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+  })) as Token;
 
   if (!token && request.nextUrl.pathname !== "/login") {
     return Response.redirect(new URL("/login", request.nextUrl));
   }
-
   if (token && request.nextUrl.pathname === "/login") {
     return Response.redirect(new URL("/", request.nextUrl));
   }
-
-  const hasAccess = await hasAccessToURL(request);
-  console.log({ path: request.nextUrl.pathname }, { hasAccess });
+  const hasAccess = await hasAccessToURL(request, token?.role);
+  console.log({ hasAccess });
 
   if (!hasAccess) {
     return Response.redirect(new URL("/access-denied", request.nextUrl));

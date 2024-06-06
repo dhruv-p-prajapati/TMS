@@ -1,5 +1,4 @@
-
-import { UserRole } from "@/utils/constants/enums";
+import { UserRole } from "@/constants/enums";
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
