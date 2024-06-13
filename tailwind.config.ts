@@ -10,9 +10,6 @@ const config = {
   ],
   prefix: "",
   theme: {
-    fontSize: {
-      xsm: "12px",
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -21,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        xsm: "12px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

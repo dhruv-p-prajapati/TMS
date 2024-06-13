@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 const AppLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="w-full h-screen bg-slate-300">
+    <div className="w-full h-screen">
       {children}
     </div>
   );

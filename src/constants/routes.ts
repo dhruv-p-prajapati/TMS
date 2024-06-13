@@ -5,8 +5,12 @@ type PrivateRouteConfig = {
 };
 
 export const PrivateRoutes: PrivateRouteConfig = {
-  [UserRole.ADMIN]: ["/dashboard", "/dashboard"],
-  [UserRole.LEAD]: [""],
+  [UserRole.ADMIN]: [
+    "/dashboard",
+    "/dashboard/spaces",
+    "/dashboard/trainees",
+    "/dashboard/trainers",
+  ],
   [UserRole.TRAINER]: ["/trainer-dashboard"],
   [UserRole.TRAINEE]: ["/projects", "/trainee-dashboard"],
 };

@@ -4,7 +4,7 @@ const spaceSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-    }
+    },
   },
   {
     versionKey: false,
