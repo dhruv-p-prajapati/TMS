@@ -6,7 +6,7 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 
 const LoginPage = () => {
-  const [isAuthenticated, user, role] = useAuthSession();
+  const {isAuthenticated, user, role} = useAuthSession();
   console.log({ isAuthenticated, user, role });
 
   const handleLoginGoogle = async () => {

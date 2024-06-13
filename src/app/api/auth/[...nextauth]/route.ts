@@ -36,11 +36,13 @@ export const authOptions: AuthOptions = {
     async jwt({ token }) {
       const user = await User.findOne({ email: token.email });
       token.role = user.role;
+      token.space = user.space;
 
       return token;
     },
     async session({ session, token }: any) {
       session.user.role = token.role;
+      session.user.space = token.space;
       return session;
     },
   },

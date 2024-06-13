@@ -1,4 +1,5 @@
 import { UserRole } from "@/constants/enums";
+import { ColumnDef } from "@tanstack/react-table";
 import { DefaultSession } from "next-auth";
 import { JWT } from "next-auth/jwt";
 
@@ -19,6 +20,10 @@ export type Token = JWT & {
   role: UserRole;
 };
 
+export type TSpace = {
+  name: string;
+};
+
 /** Extending "next-auth" module to add custom field role as UserRole */
 declare module "next-auth" {
   interface Session {
@@ -26,4 +31,11 @@ declare module "next-auth" {
       role: UserRole;
     } & DefaultSession["user"];
   }
+}
+
+/** interfaces */
+
+export interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }

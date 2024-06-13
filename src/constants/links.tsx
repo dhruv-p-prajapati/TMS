@@ -1,7 +1,30 @@
 import { Links } from "@/types";
+import { Cpu, User, UserCheck, Users } from "lucide-react";
 
 export const SidebarLinks: Links = {
-  admin: [],
+  admin: [
+    {
+      label: "Spaces",
+      slug: "/dashboard",
+      icon: (
+        <Cpu width={20} height={20}/>
+      ),
+    },
+    {
+      label: "Trainees",
+      slug: "/dashboard/trainees",
+      icon: (
+        <Users width={20} height={20}/>
+      ),
+    },
+    {
+      label: "Trainers",
+      slug: "/dashboard/trainers",
+      icon: (
+        <UserCheck width={20} height={20}/>
+      ),
+    },
+  ],
   trainee: [
     {
       label: "Home",

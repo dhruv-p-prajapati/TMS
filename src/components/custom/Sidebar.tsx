@@ -9,13 +9,13 @@ import { usePathname } from "next/navigation";
 
 export function Sidebar() {
   const pathName = usePathname();
-  const [isAuthenticated, user, role] = useAuthSession();
+  const {isAuthenticated ,user, role} = useAuthSession();
 
   console.log({ isAuthenticated, user, role });
 
   return (
-    <div className="h-full w-auto p-2 bg-white">
-      <div className=" flex items-center justify-center mb-4">
+    <div className="h-full w-auto p-4 px-3 bg-white shadow-xl">
+      <div className=" flex items-center justify-center mb-8">
         <Image
           alt="logo"
           src="/images/bacancy-favicon.png"
@@ -28,14 +28,14 @@ export function Sidebar() {
           <Link
             key={idx}
             href={link.slug}
-            className={`flex flex-col items-center justify-center size-16  rounded  duration-300 ${
+            className={`flex flex-col items-center justify-center size-12  rounded  duration-300 ${
               pathName === link.slug
                 ? "bg-primary text-white"
                 : "hover:bg-orange-200"
             }`}
           >
             <div>{link.icon}</div>
-            <p className="text-xsm font-semibold">{link.label}</p>
+            <p className="text-[10px] font-semibold">{link.label}</p>
           </Link>
         ))}
       </div>
