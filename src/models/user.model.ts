@@ -1,7 +1,8 @@
 import { UserRole } from "@/constants/enums";
+import { IUser } from "@/types";
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const userSchema: mongoose.Schema<IUser> = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -20,6 +21,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: UserRole.TRAINEE,
     },
+    isLead: {
+      type: Boolean,
+      default: false,
+    },
     space: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "space",
@@ -36,5 +41,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.models.user || mongoose.model("user", userSchema);
+const User =
+  (mongoose.models.user as mongoose.Model<IUser>) ||
+  mongoose.model<IUser>("user", userSchema);
 export default User;

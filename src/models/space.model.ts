@@ -1,9 +1,21 @@
+import { ISpace } from "@/types";
 import mongoose from "mongoose";
 
-const spaceSchema = new mongoose.Schema(
+const spaceSchema: mongoose.Schema<ISpace> = new mongoose.Schema(
   {
     name: {
       type: String,
+    },
+    slug: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
+    spaceLead: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      default: null,
     },
   },
   {
@@ -11,6 +23,8 @@ const spaceSchema = new mongoose.Schema(
   }
 );
 
-const Space = mongoose.models.space || mongoose.model("space", spaceSchema);
+const Space =
+  (mongoose.models.space as mongoose.Model<ISpace>) ||
+  mongoose.model<ISpace>("space", spaceSchema);
 
 export default Space;
