@@ -24,6 +24,16 @@ export type TSpace = {
   name: string;
 };
 
+export type TUser = {
+  name: string;
+  email: string;
+  imgUrl: string;
+  role: UserRole;
+  isLead: boolean;
+  space: null | string;
+  publishedTopic: string[];
+};
+
 /** Extending "next-auth" module to add custom field role as UserRole */
 declare module "next-auth" {
   interface Session {

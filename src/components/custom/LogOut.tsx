@@ -7,7 +7,7 @@ const LogOutButton = () => {
   return (
     <Button
       size="icon"
-      className="size-7"
+      className="size-8 bg-slate-100"
       variant="outline"
       onClick={() => {
         signOut({
@@ -15,7 +15,7 @@ const LogOutButton = () => {
         });
       }}
     >
-      <LogOut strokeWidth={2} width={20} height={20} />
+      <LogOut strokeWidth={2} width={22} height={22} />
     </Button>
   );
 };

@@ -10,7 +10,7 @@ const CustomAvatar = ({
   return (
     <Avatar>
       <AvatarImage src={image} />
-      <AvatarFallback>{username?.charAt(1).toUpperCase()}</AvatarFallback>
+      <AvatarFallback>{username?.charAt(0).toUpperCase()}</AvatarFallback>
     </Avatar>
   );
 };

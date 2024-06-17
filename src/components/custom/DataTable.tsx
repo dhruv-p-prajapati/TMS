@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
@@ -18,7 +17,6 @@ import {
 } from "@/components/ui/table";
 import { DataTableProps } from "@/types";
 import CustomTableFooter from "./CustomTableFooter";
-
 
 export function DataTable<TData, TValue>({
   columns,
@@ -39,7 +37,10 @@ export function DataTable<TData, TValue>({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="font-semibold">
+                  <TableHead
+                    key={header.id}
+                    className="font-semibold text-black"
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -60,7 +61,7 @@ export function DataTable<TData, TValue>({
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="text-xsm">
+                  <TableCell key={cell.id} className="text-xsm py-3">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -74,9 +75,11 @@ export function DataTable<TData, TValue>({
             </TableRow>
           )}
         </TableBody>
-        <TableFooter>
-          <CustomTableFooter table={table}/>
-        </TableFooter>
+        {data.length > table.getState().pagination.pageSize ? (
+          <TableFooter>
+            <CustomTableFooter table={table} />
+          </TableFooter>
+        ) : null}
       </Table>
     </div>
   );
