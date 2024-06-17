@@ -25,6 +25,13 @@ export type TSpace = {
   name: string;
 };
 
+/** Space type for mongoose Schema */
+export interface ISpace extends Document {
+  name: string;
+  slug: string;
+  image: string;
+  spaceLead: mongoose.Schema.Types.ObjectId;
+}
 /** Extending "next-auth" module to add custom field role as UserRole */
 declare module "next-auth" {
   interface Session {
