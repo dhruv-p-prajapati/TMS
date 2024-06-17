@@ -15,17 +15,18 @@ import {
 } from "@/components/ui/select";
 
 import { Button } from "../ui/button";
+import { Table } from "@tanstack/react-table";
 
 const CustomTableFooter = ({ table }) => {
   return (
     <>
-      <div className="flex justify-between items-center p-4">
+      <div className="flex justify-between items-center p-4 py-3">
         <div className="flex gap-1 items-center">
           <span className="font-medium">rows :</span>
           <div>
             <Select onValueChange={(value) => table.setPageSize(Number(value))}>
-              <SelectTrigger>
-                <SelectValue placeholder="number of rows" />
+              <SelectTrigger className="py-0 h-8">
+                <SelectValue placeholder={table.getState().pagination.pageSize} />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>

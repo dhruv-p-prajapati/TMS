@@ -25,6 +25,16 @@ export type TSpace = {
   name: string;
 };
 
+export type TUser = {
+  name: string;
+  email: string;
+  imgUrl: string;
+  role: UserRole;
+  isLead: boolean;
+  space: null | string;
+  publishedTopic: string[];
+};
+
 /** Space type for mongoose Schema */
 export interface ISpace extends Document {
   name: string;

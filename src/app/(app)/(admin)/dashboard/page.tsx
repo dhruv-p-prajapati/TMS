@@ -1,6 +1,4 @@
 import { getAllSpaces } from "@/actions/spaces";
-import { getAllTrainees } from "@/actions/trainees";
-import { getAllTrainers } from "@/actions/trainers";
 import { DataTable } from "@/components/custom/DataTable";
 import { spaceColumns } from "./columns";
 import { SpaceCard } from "@/components/custom/SpaceCard";
@@ -9,14 +7,8 @@ import { CirclePlus } from "lucide-react";
 
 const SpacesPage = async () => {
   const space = await getAllSpaces();
-  const trainees = await getAllTrainees();
-  const trainers = await getAllTrainers();
 
-  // console.log("All the data:");
-  // console.log("Spaces:", space);
-  // console.log("Trainees:", trainees);
-  // console.log("Trainers:", trainers);
-
+  
   return (
     <>
       <div>
@@ -27,7 +19,7 @@ const SpacesPage = async () => {
               <CirclePlus width={30} height={30} />
             </Button>
           </div>
-          {space.map((individualSpace) => {
+          {space.map((individualSpace:any) => {
             return (
               <SpaceCard
                 key={individualSpace._id}
@@ -46,6 +38,3 @@ const SpacesPage = async () => {
 
 export default SpacesPage;
 
-{
-  /* <DataTable data={space} columns={spaceColumns} /> */
-}

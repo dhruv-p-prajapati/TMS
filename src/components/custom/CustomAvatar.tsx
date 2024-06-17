@@ -4,13 +4,13 @@ const CustomAvatar = ({
   image,
   username,
 }: {
-  image: string | undefined | null;
+  image: string | undefined ;
   username: string | undefined | null;
 }) => {
   return (
     <Avatar>
       <AvatarImage src={image} />
-      <AvatarFallback>{username?.charAt(1).toUpperCase()}</AvatarFallback>
+      <AvatarFallback>{username?.charAt(0).toUpperCase()}</AvatarFallback>
     </Avatar>
   );
 };
