@@ -4,7 +4,7 @@ const CustomAvatar = ({
   image,
   username,
 }: {
-  image: string | undefined | null;
+  image: string | undefined ;
   username: string | undefined | null;
 }) => {
   return (
