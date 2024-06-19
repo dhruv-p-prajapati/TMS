@@ -35,10 +35,14 @@ export const uploadFile = async (file) => {
     });
     const res = await s3.send(uploadToS3);
     const url = process.env.NEXT_PUBLIC_IMAGE_BASEURL + fileName;
-    console.log({url});
-    return url
+    console.log({ url });
+    return url;
   } catch (error) {
     console.error(error);
     return error;
   }
+};
+
+export const generateSlug = (spaceName: string) => {
+  return spaceName?.toLocaleLowerCase()?.replaceAll(" ", "");
 };

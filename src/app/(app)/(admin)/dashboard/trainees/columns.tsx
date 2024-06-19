@@ -33,11 +33,6 @@ export const traineesColumns: ColumnDef<TUser>[] = [
     cell: ({ row }) => <div>{row.original.role}</div>,
   },
   {
-    accessorKey: "isLead",
-    header: () => <div className="font-bold">Lead</div>,
-    cell: ({ row }) => <div>{row.original.isLead ? "Yes" : "No"}</div>,
-  },
-  {
     accessorKey: "space",
     header: () => <div className="font-bold">Space</div>,
     cell: ({ row }) => (

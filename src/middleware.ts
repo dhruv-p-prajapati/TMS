@@ -19,7 +19,6 @@ export async function middleware(request: NextRequest) {
     return Response.redirect(new URL("/", request.nextUrl));
   }
   const hasAccess = await hasAccessToURL(request, token?.role);
-  console.log({ hasAccess });
 
   if (!hasAccess) {
     return Response.redirect(new URL("/access-denied", request.nextUrl));

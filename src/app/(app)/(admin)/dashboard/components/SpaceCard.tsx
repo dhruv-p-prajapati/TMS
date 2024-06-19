@@ -1,42 +1,46 @@
+import { getNumberOfTrainerAndTrainees } from "@/actions/spaces";
 import { Button } from "@/components/ui/button";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import mongoose from "mongoose";
 import Image from "next/image";
 
 interface SpaceCardProps {
   technology: string;
-  trainers: number;
-  trainees: number;
+  spaceId: mongoose.Schema.Types.ObjectId;
   image: string;
 }
 
-export function SpaceCard({
+export async function SpaceCard({
   technology,
-  trainers,
-  trainees,
   image,
+  spaceId,
 }: SpaceCardProps) {
-  // console.log(image);
+  const { trainees, trainers } = await getNumberOfTrainerAndTrainees(spaceId);
 
   return (
     <HoverCard>
-      <HoverCardTrigger asChild>
-        <div className="bg-gray-100  border border-gray-300 rounded-lg shadow-md p-5 text-center flex flex-row items-center ">
-          <div className="flex justify-center size-10">
-            <Image
-              src={image}
-              alt={`${technology} logo`}
-              width={40}
-              height={40}
-              className="rounded-full object-cover"
-            />
+      <div className="hover:shadow-lg duration-300">
+        <HoverCardTrigger asChild>
+          <div className="border border-gray-300 rounded-lg shadow-md p-5 text-center flex flex-row items-center">
+            <div className="flex justify-center size-10">
+              <Image
+                src={image}
+                alt={`${technology} logo`}
+                width={40}
+                height={40}
+                className="rounded-full object-cover"
+              />
+            </div>
+            <Button variant="link" className="text-md">
+              {technology}
+            </Button>
           </div>
-          <Button variant="link" className="text-md">{technology}</Button>
-        </div>
-      </HoverCardTrigger>
+        </HoverCardTrigger>
+      </div>
       <HoverCardContent className="w-72 p-4 border border-gray-200 bg-white shadow-lg rounded-md">
         <h3 className="text-lg font-semibold mb-2 text-gray-800">
           Technology: {technology}

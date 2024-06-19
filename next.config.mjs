@@ -2,10 +2,14 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['www.freecodecamp.org'], 
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tms-bacancy-final.s3.ap-south-1.amazonaws.com",
+        pathname: "**",
+      },
+    ],
   },
-  
 };
-
 
 export default nextConfig;

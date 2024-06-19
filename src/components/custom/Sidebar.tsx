@@ -11,8 +11,6 @@ export function Sidebar() {
   const pathName = usePathname();
   const {isAuthenticated ,user, role} = useAuthSession();
 
-  console.log({ isAuthenticated, user, role });
-
   return (
     <div className="h-full w-auto p-4 px-3 bg-white shadow-xl">
       <div className=" flex items-center justify-center mb-8">
