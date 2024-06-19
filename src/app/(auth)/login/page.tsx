@@ -7,8 +7,7 @@ import Image from "next/image";
 
 const LoginPage = () => {
   const {isAuthenticated, user, role} = useAuthSession();
-  console.log({ isAuthenticated, user, role });
-
+  
   const handleLoginGoogle = async () => {
     signIn("google", {
       callbackUrl: "/",

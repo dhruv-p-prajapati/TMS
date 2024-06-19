@@ -3,6 +3,7 @@ import "./globals.css";
 import SessionProviderWrapper from "@/app/SessionProvider";
 import { getServerSession } from "next-auth";
 import manrope from "@/lib/fonts/fonts";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +19,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProviderWrapper session={session}>
-        <body className={`${manrope} h-screen w-full `}>{children}</body>
+        <body className={`${manrope} h-screen w-full `}>
+          {children}
+          <Toaster />
+        </body>
       </SessionProviderWrapper>
     </html>
   );
