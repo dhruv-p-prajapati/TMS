@@ -1,8 +1,9 @@
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { Token } from "./types";
-import { hasAccessToURL } from "./helpers";
-import { UserRole } from "./constants/enums";
+import { hasAccessToURL } from "./lib/utils";
+
+
 
 export async function middleware(request: NextRequest) {
   const token = (await getToken({
